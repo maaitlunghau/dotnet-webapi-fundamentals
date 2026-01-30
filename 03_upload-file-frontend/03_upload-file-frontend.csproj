@@ -7,4 +7,8 @@
     <RootNamespace>_03_upload_file_frontend</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../LModels/LModels.csproj" />
+  </ItemGroup>
+
 </Project>

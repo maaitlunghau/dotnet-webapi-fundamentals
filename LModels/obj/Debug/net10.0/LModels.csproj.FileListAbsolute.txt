@@ -1,0 +1,12 @@
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/bin/Debug/net10.0/LModels.deps.json
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/bin/Debug/net10.0/LModels.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/bin/Debug/net10.0/LModels.pdb
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.AssemblyInfoInputs.cache
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.AssemblyInfo.cs
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.csproj.CoreCompileInputs.cache
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.sourcelink.json
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/refint/LModels.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/LModels.pdb
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/LModels/obj/Debug/net10.0/ref/LModels.dll

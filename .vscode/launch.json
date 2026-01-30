@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Web API",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-api",
+      "program": "${workspaceFolder}/03_upload-file-local/bin/Debug/net10.0/03_upload-file-local.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/03_upload-file-local",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "MVC Frontend",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-frontend",
+      "program": "${workspaceFolder}/03_upload-file-frontend/bin/Debug/net10.0/03_upload-file-frontend.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/03_upload-file-frontend",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "API + Frontend",
+      "configurations": ["Web API", "MVC Frontend"],
+      "stopAll": true
+    }
+  ]
+}

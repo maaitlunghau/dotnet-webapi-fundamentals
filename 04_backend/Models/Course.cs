@@ -12,5 +12,5 @@ public class Course
     public double Price { get; set; }
     public bool Status { get; set; }
     public string? Teacher { get; set; }
-    public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
+    public ICollection<StudentCourse>? StudentCourses { get; set; } = new List<StudentCourse>();
 }

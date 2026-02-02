@@ -26,5 +26,29 @@ namespace _04_backend.Controller
 
             return Created("", student);
         }
+
+        [HttpPost("{id:int}/course")]
+        public async Task<IActionResult> EnrollStudent(int id, int courseId)
+        {
+            var studentExisting = await _dbContext.Students.AnyAsync(s => s.Id == id);
+            var courseExisting = await _dbContext.Courses.AnyAsync(c => c.Id == courseId);
+            if (!studentExisting || !courseExisting)
+                return NotFound("Student or Course not found");
+
+            var exists = await _dbContext.StudentCourses
+                .AnyAsync(sc => sc.CourseId == courseId && sc.StudentId == id);
+
+            if (exists)
+                return Conflict("Already Enrolled");
+
+            await _dbContext.StudentCourses.AddAsync(new StudentCourse()
+            {
+                CourseId = courseId,
+                StudentId = id
+            });
+
+            await _dbContext.SaveChangesAsync();
+            return Ok("Enrolled successfully");
+        }
     }
 }

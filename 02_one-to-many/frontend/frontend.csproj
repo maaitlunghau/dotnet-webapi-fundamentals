@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../backend/backend.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views/Category/" />
+  </ItemGroup>
+
 </Project>

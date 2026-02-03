@@ -37,7 +37,33 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 ```
 dotnet-webapi-fundamentals/
 ├── 01_web-api_demo/          # Basic Web API setup
-├── 02_one-to-many/           # One-to-Many relationship
+│   ├── Controllers/          # API Controllers
+│   ├── Data/                 # DbContext
+│   ├── Models/               # Domain Models
+│   ├── Migrations/           # EF Core Migrations
+│   └── docs/                 # Architecture diagrams
+│
+├── 02_one-to-many/           # One-to-Many relationship demo
+│   ├── backend/              # Web API Project
+│   │   ├── Controller/       # CategoryController, ProductController
+│   │   ├── Data/             # DataContext with relationships
+│   │   ├── DTOs/             # Data Transfer Objects
+│   │   ├── Migrations/       # Database migrations
+│   │   └── Program.cs        # API configuration + Swagger
+│   │
+│   ├── frontend/             # MVC Project
+│   │   ├── Controllers/      # CategoryController, ProductController
+│   │   ├── Views/
+│   │   │   ├── Category/     # CRUD views for Category
+│   │   │   ├── Product/      # CRUD views for Product
+│   │   │   └── Shared/       # Layout, validation scripts
+│   │   └── wwwroot/          # Static files (CSS, JS)
+│   │
+│   ├── LModels/              # Shared Class Library
+│   │   └── Domain/           # Category.cs, Product.cs
+│   │
+│   └── docs/                 # Project diagrams
+│
 ├── 03_*/                     # Coming soon...
 └── README.md
 ```

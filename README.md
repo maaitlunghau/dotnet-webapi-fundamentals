@@ -19,7 +19,7 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 
 ## 🛠️ Tech Stack
 
-<div align="center">
+<div align="left">
 
 | Technology | Purpose |
 |------------|----------|

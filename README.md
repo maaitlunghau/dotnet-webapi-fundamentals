@@ -42,6 +42,36 @@ dotnet-webapi-fundamentals/
 └── README.md
 ```
 
+---
+
+## 📚 Projects
+
+### 01. Product CRUD API
+
+**Description:** Implement complete RESTful Product API with CRUD operations, EF Core integration, SQL Server database, model validation, and Swagger UI for testing.
+
+<!-- **Key Features:**
+- RESTful CRUD endpoints (GET, POST, PUT, DELETE)
+- Entity Framework Core + SQL Server
+- Model validation & error handling
+- Swagger UI documentation -->
+
+<details>
+<summary>📊 Architecture Diagram</summary>
+
+![Architecture](01_web-api_demo/docs/architecture-diagram.png)
+
+</details>
+
+<details>
+<summary>🔄 Sequence Diagram</summary>
+
+![Sequence Flow](01_web-api_demo/docs/sequence-diagram.png)
+
+</details>
+
+---
+
 ## 🎯 Learning Path
 
 ### ✅ Completed

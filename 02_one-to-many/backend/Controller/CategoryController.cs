@@ -1,4 +1,5 @@
 using backend.Data;
+using backend.DTOs;
 using LModels.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,12 @@ namespace backend.Controller
         {
             try
             {
-                var categories = await _dbContext.Categories.ToListAsync();
+                var categories = await _dbContext.Categories
+                    .Select(c => new CategoryDto(
+                        c.Id,
+                        c.Name
+                    ))
+                    .ToListAsync();
                 return Ok(categories);
             }
             catch (Exception ex)
@@ -31,7 +37,13 @@ namespace backend.Controller
         {
             try
             {
-                var category = await _dbContext.Categories.FindAsync(id);
+                var category = await _dbContext.Categories
+                    .Where(c => c.Id == id)
+                    .Select(c => new CategoryDto(
+                        c.Id,
+                        c.Name
+                    ))
+                    .FirstOrDefaultAsync();
                 if (category is null)
                     return NotFound($"Category with Id = {id} not found.");
 
@@ -44,16 +56,26 @@ namespace backend.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory([FromBody] Category category)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto cate)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             try
             {
-                await _dbContext.Categories.AddAsync(category);
+                var entity = new Category
+                {
+                    Name = cate.Name
+                };
+
+                await _dbContext.Categories.AddAsync(entity);
                 await _dbContext.SaveChangesAsync();
 
-                return Created("Created new category successfully", category);
+                var result = new CategoryDto(entity.Id, entity.Name);
+                return CreatedAtAction(
+                    nameof(GetCategoryById),
+                    new { id = entity.Id },
+                    result
+                );
             }
             catch (Exception ex)
             {
@@ -62,7 +84,7 @@ namespace backend.Controller
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateCategory(int id, [FromBody] Category category)
+        public async Task<IActionResult> UpdateCategory(int id, [FromBody] UpdateCategoryDto cate)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -72,10 +94,11 @@ namespace backend.Controller
                 if (existingCategory is null)
                     return NotFound($"Category with Id = {id} not found.");
 
-                existingCategory.Name = category.Name;
+                existingCategory.Name = cate.Name;
                 await _dbContext.SaveChangesAsync();
 
-                return Ok(existingCategory);
+                var result = new CategoryDto(existingCategory.Id, existingCategory.Name);
+                return Ok(result);
             }
             catch (Exception ex)
             {

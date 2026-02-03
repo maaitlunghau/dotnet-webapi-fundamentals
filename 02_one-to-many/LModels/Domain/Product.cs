@@ -10,7 +10,7 @@ public class Product
     public int Id { get; set; }
 
     [Required]
-    public int CaetgoryId { get; set; }
+    public int CategoryId { get; set; }
 
     [Required(ErrorMessage = "Tên sản phẩm không được bỏ trống!")]
     [StringLength(100, MinimumLength = 3, ErrorMessage = "Độ dài tên sản phẩm phải từ 3-100 ký tự!")]

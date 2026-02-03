@@ -19,36 +19,18 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 
 ## 🛠️ Tech Stack
 
-<table style="width: 100%;">
-<tr>
-<th align="left" style="width: 50%;">Technology</th>
-<th align="left" style="width: 50%;">Purpose</th>
-</tr>
-<tr>
-<td><img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET"></td>
-<td>Core Framework</td>
-</tr>
-<tr>
-<td><img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C#"></td>
-<td>Programming Language</td>
-</tr>
-<tr>
-<td><img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"></td>
-<td>Database</td>
-</tr>
-<tr>
-<td><img src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server"></td>
-<td>Database</td>
-</tr>
-<tr>
-<td><img src="https://img.shields.io/badge/OrbStack-0DB7ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"></td>
-<td>Containerization</td>
-</tr>
-<tr>
-<td><img src="https://img.shields.io/badge/Azure%20Data%20Studio-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white" alt="Azure"></td>
-<td>Database Management</td>
-</tr>
-</table>
+<div align="left">
+
+| Technology | Purpose |
+|------------|----------|
+| ![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white) | Core Framework |
+| ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white) | Programming Language |
+| ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) | Database |
+| ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white) | Database |
+| ![OrbStack](https://img.shields.io/badge/OrbStack-0DB7ED?style=for-the-badge&logo=docker&logoColor=white) | Containerization |
+| ![Azure Data Studio](https://img.shields.io/badge/Azure%20Data%20Studio-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white) | Database Management |
+
+</div>
 
 ## 📂 Project Structure
 

@@ -48,6 +48,7 @@ namespace backend.Controller
             {
                 var existingPro = await _dbContext.Products
                     .Include(p => p.Category)
+                    .Where(p => p.Id == id)
                     .Select(p => new ProductDto(
                         p.Id,
                         p.Name,
@@ -56,7 +57,7 @@ namespace backend.Controller
                         p.CategoryId,
                         p.Category != null ? p.Category.Name : "Unknown"
                     ))
-                    .FirstOrDefaultAsync(p => p.Id == id);
+                    .FirstOrDefaultAsync();
                 if (existingPro is null)
                     return NotFound($"Product with Id = {id} not found.");
 

@@ -22,13 +22,13 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 <div align="left">
 
 | Technology | Purpose |
-|:-----------|:--------|
+|------------|----------|
 | ![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white) | Core Framework |
 | ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white) | Programming Language |
 | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) | Database |
 | ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white) | Database |
-| ![OrbStack](https://img.shields.io/badge/OrbStack-0DB7ED?style=for-the-badge&logo=docker&logoColor=white) | Containerization |
-| ![Azure Data Studio](https://img.shields.io/badge/Azure%20Data%20Studio-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white) | Database Management |
+| ![Docker](https://img.shields.io/badge/OrbStack-0DB7ED?style=for-the-badge&logo=docker&logoColor=white) | Containerization |
+| ![Azure](https://img.shields.io/badge/Azure%20Data%20Studio-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white) | Database Management |
 
 </div>
 
@@ -37,21 +37,86 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 ```
 dotnet-webapi-fundamentals/
 ├── 01_web-api_demo/          # Basic Web API setup
-├── 02_web-api_demo2/         # RESTful API patterns
+├── 02_one-to-many/           # One-to-Many relationship
 ├── 03_*/                     # Coming soon...
 └── README.md
 ```
 
+---
+
+## 📚 Projects
+
+### 01. Product CRUD API
+
+**Description:** Implement complete RESTful Product API demonstrating fundamental CRUD operations and database integration.
+
+**Key Features:**
+- RESTful CRUD endpoints (GET, POST, PUT, DELETE)
+- Entity Framework Core integration
+- SQL Server database with migrations
+- Model validation & error handling
+- Swagger UI documentation
+- Async/await pattern
+
+**Tech Stack:** ASP.NET Core Web API, EF Core, SQL Server, Swagger
+
+<details>
+<summary>📊 Architecture Diagram</summary>
+
+![Architecture](01_web-api_demo/docs/architecture-diagram.png)
+
+</details>
+
+<details>
+<summary>🔄 Sequence Diagram</summary>
+
+![Sequence Flow](01_web-api_demo/docs/sequence-diagram.png)
+
+</details>
+
+---
+
+### 02. One-to-Many Relationship API
+
+**Description:** Implement complete Category-Product management system demonstrating One-to-Many relationship pattern.
+
+**Key Features:**
+- One-to-Many relationship: Category (1) → Products (Many)
+- Full CRUD operations for both entities
+- DTO pattern for clean API contracts
+- Foreign key validation & safe navigation
+- EF Core with SQL Server & Migrations
+- Swagger UI with auto-redirect
+- Cascade delete restriction (Restrict behavior)
+
+**Tech Stack:** ASP.NET Core Web API, EF Core, SQL Server, Swagger
+
+<details>
+<summary>🏗️ Project Structure</summary>
+
+![Project Structure](02_one-to-many/docs/demo2-project-structure.png)
+
+</details>
+
+<details>
+<summary>🔄 CRUD Flow Sequence Diagram</summary>
+
+![CRUD Product Flow](02_one-to-many/docs/crud-product-flow-sequence-diagram.png)
+
+</details>
+
+---
+
 ## 🎯 Learning Path
 
-### ✅ Completed
+### Completed
 - [x] **01_web-api_demo** - Initial Web API setup
-- [x] **02_web-api_demo2** - RESTful API fundamentals
+- [x] **02_one-to-many** - One-to-Many relationship with EF Core
 
-### 🔄 In Progress
+### In Progress
 - [ ] **03_*** - TBD
 
-### 📋 Planned Topics
+### Planned Topics
 - Entity Framework Core & Database Integration
 - Authentication & Authorization (JWT)
 - Repository Pattern & Clean Architecture

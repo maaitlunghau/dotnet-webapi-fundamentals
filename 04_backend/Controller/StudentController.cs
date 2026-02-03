@@ -12,9 +12,20 @@ namespace _04_backend.Controller
         public StudentController(DataContext dbContext) => _dbContext = dbContext;
 
         [HttpGet]
-        public async Task<ActionResult<List<Course>>> Get()
+        public async Task<ActionResult<List<Course>>> GetStudents()
         {
-            var students = await _dbContext.Students.ToListAsync();
+            var students = await _dbContext.Students.Select(s => new
+            {
+                s.Id,
+                s.Name,
+                s.Age,
+                CoursesXX = s.StudentCourse.Select(sc => new
+                {
+                    sc.CourseId,
+                    sc.Course!.Title,
+                    sc.EnrollDate
+                }).ToList()
+            }).ToListAsync();
             return Ok(students);
         }
 

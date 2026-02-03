@@ -1,6 +1,0 @@
-@_03_upload_file_local_HostAddress = http://localhost:5294
-
-GET {{_03_upload_file_local_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

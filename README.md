@@ -22,7 +22,7 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 <div align="left">
 
 | Technology | Purpose |
-|------------|----------|
+|:-----------|:--------|
 | ![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white) | Core Framework |
 | ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white) | Programming Language |
 | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) | Database |

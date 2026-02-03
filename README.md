@@ -21,8 +21,8 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 
 <table style="width: 100%;">
 <tr>
-<th align="left">Technology</th>
-<th align="left">Purpose</th>
+<th align="left" style="width: 50%;">Technology</th>
+<th align="left" style="width: 50%;">Purpose</th>
 </tr>
 <tr>
 <td><img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET"></td>

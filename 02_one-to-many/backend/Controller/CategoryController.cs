@@ -13,6 +13,7 @@ namespace backend.Controller
         private readonly DataContext _dbContext;
         public CategoryController(DataContext dbContext) => _dbContext = dbContext;
 
+
         [HttpGet]
         public async Task<IActionResult> GetAllCategories()
         {
@@ -31,6 +32,7 @@ namespace backend.Controller
                 return StatusCode(500, ex.Message);
             }
         }
+
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCategoryById(int id)
@@ -54,6 +56,7 @@ namespace backend.Controller
                 return StatusCode(500, ex.Message);
             }
         }
+
 
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto cate)
@@ -83,6 +86,7 @@ namespace backend.Controller
             }
         }
 
+
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateCategory(int id, [FromBody] UpdateCategoryDto cate)
         {
@@ -105,6 +109,7 @@ namespace backend.Controller
                 return StatusCode(500, ex.Message);
             }
         }
+
 
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteCategory(int id)

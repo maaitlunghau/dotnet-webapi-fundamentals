@@ -1,0 +1,33 @@
+@using backend.DTOs
+@model ProductDto
+
+<div class="container mt-3">
+    <h2>Xóa sản phẩm</h2>
+
+    <div class="alert alert-danger">
+        <h4>Bạn có chắc chắn muốn xóa sản phẩm này?</h4>
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3">ID:</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+
+        <dt class="col-sm-3">Tên sản phẩm:</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Giá:</dt>
+        <dd class="col-sm-9">@Model.Price.ToString("N0") VNĐ</dd>
+
+        <dt class="col-sm-3">Số lượng:</dt>
+        <dd class="col-sm-9">@Model.Stock</dd>
+
+        <dt class="col-sm-3">Danh mục:</dt>
+        <dd class="col-sm-9">@Model.Category</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>

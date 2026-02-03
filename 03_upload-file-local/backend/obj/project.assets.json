@@ -1071,6 +1071,16 @@
             "rid": "win"
           }
         }
+      },
+      "LModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/LModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LModels.dll": {}
+        }
       }
     }
   },
@@ -2840,11 +2850,17 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "LModels/1.0.0": {
+      "type": "project",
+      "path": "../LModels/LModels.csproj",
+      "msbuildProject": "../LModels/LModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
       "Azure.Identity >= 1.17.1",
+      "LModels >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.1",
       "Microsoft.EntityFrameworkCore >= 8.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.10",
@@ -2877,7 +2893,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/03_upload-file-local/LModels/LModels.csproj": {
+              "projectPath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/03_upload-file-local/LModels/LModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

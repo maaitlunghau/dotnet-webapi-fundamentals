@@ -22,4 +22,12 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../LModels/LModels.csproj" />
+  </ItemGroup>
+
 </Project>

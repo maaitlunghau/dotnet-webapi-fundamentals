@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LModels", "03_upload-file-l
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_many-to-many", "04_many-to-many\04_many-to-many.csproj", "{4113F254-9217-4907-969F-4C75E3C8CDF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_authentication", "05_authentication\05_authentication.csproj", "{B260CE22-F526-492E-980A-E52AFE666F12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,18 @@ Global
 		{4113F254-9217-4907-969F-4C75E3C8CDF8}.Release|x64.Build.0 = Release|Any CPU
 		{4113F254-9217-4907-969F-4C75E3C8CDF8}.Release|x86.ActiveCfg = Release|Any CPU
 		{4113F254-9217-4907-969F-4C75E3C8CDF8}.Release|x86.Build.0 = Release|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Debug|x64.Build.0 = Debug|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Debug|x86.Build.0 = Debug|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Release|x64.ActiveCfg = Release|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Release|x64.Build.0 = Release|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Release|x86.ActiveCfg = Release|Any CPU
+		{B260CE22-F526-492E-980A-E52AFE666F12}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

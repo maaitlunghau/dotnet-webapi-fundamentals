@@ -11,8 +11,6 @@
 
 </div>
 
----
-
 ## 📚 About This Repository
 
 This repository contains a progressive series of ASP.NET Core Web API projects, designed to build strong backend fundamentals through hands-on practice. Each project focuses on specific concepts and real-world scenarios.
@@ -32,60 +30,6 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 
 </div>
 
-## 📂 Project Structure
-
-```
-dotnet-webapi-fundamentals/
-├── 01_web-api_demo/          # Basic Web API setup
-│   ├── Controllers/          # API Controllers
-│   ├── Data/                 # DbContext
-│   ├── Models/               # Domain Models
-│   ├── Migrations/           # EF Core Migrations
-│   └── docs/                 # Architecture diagrams
-│
-├── 02_one-to-many/           # One-to-Many relationship demo
-│   ├── backend/              # Web API Project
-│   │   ├── Controller/       # CategoryController, ProductController
-│   │   ├── Data/             # DataContext with relationships
-│   │   ├── DTOs/             # Data Transfer Objects
-│   │   ├── Migrations/       # Database migrations
-│   │   └── Program.cs        # API configuration + Swagger
-│   │
-│   ├── frontend/             # MVC Project
-│   │   ├── Controllers/      # CategoryController, ProductController
-│   │   ├── Views/
-│   │   │   ├── Category/     # CRUD views for Category
-│   │   │   ├── Product/      # CRUD views for Product
-│   │   │   └── Shared/       # Layout, validation scripts
-│   │   └── wwwroot/          # Static files (CSS, JS)
-│   │
-│   ├── LModels/              # Shared Class Library
-│   │   └── Domain/           # Category.cs, Product.cs
-│   │
-│   └── docs/                 # Project diagrams
-│
-├── 03_upload-file-local/     # File upload demo
-│   ├── backend/              # Web API Project
-│   │   ├── Controller/       # ProductController
-│   │   ├── Data/             # DataContext
-│   │   ├── DTOs/             # ProductDto
-│   │   └── Program.cs        # API configuration + Swagger
-│   │
-│   ├── frontend/             # MVC Project
-│   │   ├── Controllers/      # ProductController with upload
-│   │   ├── Helpers/          # FileUpload helper class
-│   │   ├── Views/Product/    # Index, Create views
-│   │   └── wwwroot/          # Static files + uploaded images
-│   │
-│   ├── LModels/              # Shared Class Library
-│   │   └── Domain/           # Product.cs
-│   │
-│   └── docs/                 # Upload flow diagrams
-│
-├── 04_*/                     # Coming soon...
-└── README.md
-```
-
 ---
 
 ## 📚 Projects
@@ -103,6 +47,27 @@ dotnet-webapi-fundamentals/
 - Async/await pattern
 
 **Tech Stack:** ASP.NET Core Web API, EF Core, SQL Server, Swagger
+
+<details>
+<summary>📂 Project Structure</summary>
+
+```
+01_web-api_demo/
+├── Controllers/
+│   └── ProductController.cs
+├── Data/
+│   └── DataContext.cs
+├── Models/
+│   └── Product.cs
+├── Migrations/
+├── docs/
+│   ├── architecture-diagram.png
+│   └── sequence-diagram.png
+├── Program.cs
+└── appsettings.json
+```
+
+</details>
 
 <details>
 <summary>📊 Architecture Diagram</summary>
@@ -134,6 +99,40 @@ dotnet-webapi-fundamentals/
 - Cascade delete restriction (Restrict behavior)
 
 **Tech Stack:** ASP.NET Core Web API, EF Core, SQL Server, Swagger
+
+<details>
+<summary>📂 Project Structure</summary>
+
+```
+02_one-to-many/
+├── backend/
+│   ├── Controller/
+│   │   ├── CategoryController.cs
+│   │   └── ProductController.cs
+│   ├── Data/
+│   │   └── DataContext.cs
+│   ├── DTOs/
+│   │   ├── CategoryDto.cs
+│   │   └── ProductDto.cs
+│   ├── Migrations/
+│   └── Program.cs
+├── frontend/
+│   ├── Controllers/
+│   ├── Views/
+│   │   ├── Category/
+│   │   ├── Product/
+│   │   └── Shared/
+│   └── wwwroot/
+├── LModels/
+│   └── Domain/
+│       ├── Category.cs
+│       └── Product.cs
+└── docs/
+    ├── demo2-project-structure.png
+    └── crud-product-flow-sequence-diagram.png
+```
+
+</details>
 
 <details>
 <summary>🏗️ Project Structure</summary>
@@ -168,6 +167,38 @@ dotnet-webapi-fundamentals/
 **Tech Stack:** ASP.NET Core Web API, ASP.NET Core MVC, EF Core, SQL Server, IFormFile
 
 <details>
+<summary>📂 Project Structure</summary>
+
+```
+03_upload-file-local/
+├── backend/
+│   ├── Controller/
+│   │   └── ProductController.cs
+│   ├── Data/
+│   │   └── DataContext.cs
+│   ├── DTOs/
+│   │   └── ProductDto.cs
+│   └── Program.cs
+├── frontend/
+│   ├── Controllers/
+│   │   └── ProductController.cs
+│   ├── Helpers/
+│   │   └── FileUpload.cs
+│   ├── Views/
+│   │   └── Product/
+│   └── wwwroot/
+│       └── uploads/
+├── LModels/
+│   └── Domain/
+│       └── Product.cs
+└── docs/
+    ├── upload-flow-sequence-diagram.png
+    └── data-flow-diagram-simple.png
+```
+
+</details>
+
+<details>
 <summary>🔄 Upload Flow Sequence Diagram</summary>
 
 ![Upload Flow Sequence](03_upload-file-local/docs/upload-flow-sequence-diagram.png)
@@ -183,15 +214,76 @@ dotnet-webapi-fundamentals/
 
 ---
 
+### 04. Many-to-Many Relationship API
+
+**Description:** Implement complete Student-Course enrollment system demonstrating Many-to-Many relationship pattern with junction table.
+
+**Key Features:**
+- Many-to-Many relationship: Student (Many) ↔ Course (Many) via StudentCourse junction table
+- Full CRUD operations for both Student and Course entities
+- Student enrollment/removal endpoints
+- DTO pattern to prevent circular reference in JSON serialization
+- Nested DTOs (StudentEnrollmentDto, CourseEnrollmentDto) for clean API responses
+- EF Core Include/ThenInclude for eager loading
+- Composite primary key in junction table
+- Duplicate enrollment prevention
+- Swagger UI with auto-redirect
+
+**Tech Stack:** ASP.NET Core Web API, EF Core, SQL Server, Swagger
+
+<details>
+<summary>📂 Project Structure</summary>
+
+```
+04_many-to-many/
+├── Controllers/
+│   ├── CourseController.cs
+│   └── StudentController.cs
+├── Data/
+│   └── DataContext.cs
+├── Models/
+│   ├── Course.cs
+│   ├── Student.cs
+│   └── StudentCourse.cs
+├── DTOs/
+│   ├── CourseDto.cs
+│   └── StudentDto.cs
+├── Migrations/
+├── docs/
+│   ├── enrollment-flow-sequence-diagram.png
+│   └── DTO-mapping-flow-circular-reference-prevention.png
+├── Program.cs
+└── appsettings.json
+```
+
+</details>
+
+<details>
+<summary>🔄 Enrollment Flow Sequence Diagram</summary>
+
+![Enrollment Flow](04_many-to-many/docs/enrollment-flow-sequence-diagram.png)
+
+</details>
+
+<details>
+<summary>🔄 DTO Mapping Flow - Circular Reference Prevention</summary>
+
+![DTO Mapping Flow](04_many-to-many/docs/DTO-mapping-flow-circular-reference-prevention.png)
+
+</details>
+
+---
+
 ## 🎯 Learning Path
 
 ### ✅ Completed
 - [x] **01_web-api_demo** - Initial Web API setup
 - [x] **02_one-to-many** - One-to-Many relationship with EF Core
 - [x] **03_upload-file-local** - File upload with image management
+- [x] **04_many-to-many** - Many-to-Many relationship with junction table
 
 ### 🔄 In Progress
-- [ ] **04_*** - TBD
+- [ ] **05_*** - TBD
 
 ### Planned Topics
 - Entity Framework Core & Database Integration

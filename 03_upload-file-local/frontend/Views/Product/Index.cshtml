@@ -1,0 +1,53 @@
+@using LModels.Data
+@model List<Product>
+
+<div class="container mt-3">
+    <h2>Danh sách sản phẩm</h2>
+    
+    <a asp-action="Create" class="btn btn-success mb-3">
+        <i class="bi bi-plus-circle"></i> Tạo mới sản phẩm
+    </a>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="~/@item.ImageUrl" class="card-img-top" alt="@item.Name" style="height: 250px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 250px;">
+                                <span class="text-white">No Image</span>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">
+                                <strong>Giá:</strong> @item.Price?.ToString("N0") VNĐ
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <form asp-action="DeleteProduct" asp-route-id="@item.Id" method="post" 
+                                  onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                                <button type="submit" class="btn btn-danger btn-sm w-100">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Không có sản phẩm nào. <a asp-action="Create">Tạo mới</a>
+        </div>
+    }
+</div>

@@ -16,7 +16,7 @@ public class TokenService
         _configuration = configuration;
 
     // create access token
-    public string CreateAccessToken(Account acc)
+    public (string accessToken, string jti) CreateAccessToken(Account acc)
     {
         var jti = Guid.NewGuid().ToString();
 
@@ -52,7 +52,8 @@ public class TokenService
             signingCredentials: credentials
         );
 
-        return new JwtSecurityTokenHandler().WriteToken(jwt);
+        var accessToken = new JwtSecurityTokenHandler().WriteToken(jwt);
+        return (accessToken, jti);
     }
 
     public RefreshTokenRecord CreateRefreshtoken(Guid AccountId, string accessTokenJti)

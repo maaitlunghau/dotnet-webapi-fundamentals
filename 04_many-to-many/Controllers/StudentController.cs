@@ -26,7 +26,12 @@ namespace _04_many_to_many.Controllers
                         s.Name,
                         s.Age,
                         s.Status,
-                        s.StudentCourses!.ToList()
+                        s.StudentCourses!.Select(sc => new CourseEnrollmentDto(
+                            sc.CourseId,
+                            sc.Course!.Title,
+                            sc.Course.Price,
+                            sc.EnrollDate
+                        )).ToList()
                     )).ToListAsync();
 
                 return Ok(students);
@@ -52,7 +57,12 @@ namespace _04_many_to_many.Controllers
                         s.Name,
                         s.Age,
                         s.Status,
-                        s.StudentCourses!.ToList()
+                        s.StudentCourses!.Select(sc => new CourseEnrollmentDto(
+                            sc.CourseId,
+                            sc.Course!.Title,
+                            sc.Course.Price,
+                            sc.EnrollDate
+                        )).ToList()
                     )).FirstOrDefaultAsync();
 
                 return Ok(students);
@@ -86,7 +96,7 @@ namespace _04_many_to_many.Controllers
                     entity.Name,
                     entity.Age,
                     entity.Status,
-                    entity.StudentCourses!.ToList()
+                    new List<CourseEnrollmentDto>()
                 );
 
                 return CreatedAtAction(
@@ -102,30 +112,38 @@ namespace _04_many_to_many.Controllers
         }
 
 
-        // [HttpPut("{id:Guid}")]
-        // public async Task<IActionResult> UpdateStudent(Guid id, [FromBody] UpdateStudentDto stu)
-        // {
-        //     if (!ModelState.IsValid) return BadRequest(ModelState);
+        [HttpPut("{id:Guid}")]
+        public async Task<IActionResult> UpdateStudent(Guid id, [FromBody] UpdateStudentDto stu)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        //     try
-        //     {
-        //         var existingStudent = await _dbContext.Students.FindAsync(id);
+            try
+            {
+                var existingStudent = await _dbContext.Students.FindAsync(id);
+                if (existingStudent is null)
+                    return NotFound($"Sinh viên không tồn tại!");
 
-        //         if (existingStudent is null)
-        //             return NotFound($"Could not find student with Id = {id}");
+                existingStudent.Name = stu.Name;
+                existingStudent.Age = stu.Age;
+                existingStudent.Status = stu.Status;
 
-        //         existingStudent.Name = stu.Name;
-        //         existingStudent.Age = stu.Age;
-        //         existingStudent.Status = stu.Status;
+                await _dbContext.SaveChangesAsync();
 
-        //         await _dbContext.SaveChangesAsync();
-        //         return Ok(existingStudent);
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
-        //     }
-        // }
+                var result = new StudentDto(
+                    existingStudent.Id,
+                    existingStudent.Name,
+                    existingStudent.Age,
+                    existingStudent.Status,
+                    new List<CourseEnrollmentDto>()
+                );
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
 
 
         [HttpDelete("{id:Guid}")]

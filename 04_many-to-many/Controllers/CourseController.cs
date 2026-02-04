@@ -28,7 +28,12 @@ namespace _04_many_to_many.Controllers
                         c.Title,
                         c.Price,
                         c.Status,
-                        c.StudentCourses!.ToList()
+                        c.StudentCourses!.Select(sc => new StudentEnrollmentDto(
+                            sc.StudentId,
+                            sc.Student!.Name,
+                            sc.Student.Age,
+                            sc.EnrollDate
+                        )).ToList()
                     ))
                     .ToListAsync();
 
@@ -47,7 +52,7 @@ namespace _04_many_to_many.Controllers
             try
             {
                 var course = await _dbContext.Courses
-                    .Include(c => c.StudentCourses)
+                    .Include(c => c.StudentCourses!)
                     .ThenInclude(sc => sc.Student)
                     .Where(c => c.Id == id)
                     .Select(c => new CourseDto
@@ -56,7 +61,12 @@ namespace _04_many_to_many.Controllers
                         c.Title,
                         c.Price,
                         c.Status,
-                        c.StudentCourses.ToList()
+                        c.StudentCourses!.Select(sc => new StudentEnrollmentDto(
+                            sc.StudentId,
+                            sc.Student!.Name,
+                            sc.Student.Age,
+                            sc.EnrollDate
+                        )).ToList()
                     ))
                     .FirstOrDefaultAsync();
                 if (course is null) return NotFound("Không tìm thấy khoá học này!");
@@ -93,7 +103,7 @@ namespace _04_many_to_many.Controllers
                     entity.Title,
                     entity.Price,
                     entity.Status,
-                    new List<StudentCourse>()
+                    new List<StudentEnrollmentDto>()
                 );
 
                 return CreatedAtAction(
@@ -125,7 +135,15 @@ namespace _04_many_to_many.Controllers
 
                 await _dbContext.SaveChangesAsync();
 
-                return Ok(existingCourse);
+                var result = new CourseDto(
+                    existingCourse.Id,
+                    existingCourse.Title,
+                    existingCourse.Price,
+                    existingCourse.Status,
+                    new List<StudentEnrollmentDto>()
+                );
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -181,14 +199,18 @@ namespace _04_many_to_many.Controllers
                 await _dbContext.StudentCourses.AddAsync(enrollment);
                 await _dbContext.SaveChangesAsync();
 
+                var result = new
+                {
+                    StudentId = studentId,
+                    CourseId = courseId,
+                    EnrollDate = enrollment.EnrollDate,
+                    Message = "Đăng ký thành công"
+                };
+
                 return CreatedAtAction(
-                    nameof(Get),
-                    new
-                    {
-                        courseId = courseId,
-                        studentId = studentId
-                    },
-                    enrollment
+                    nameof(GetSingleCourse),
+                    new { id = courseId },
+                    result
                 );
             }
             catch (Exception ex)

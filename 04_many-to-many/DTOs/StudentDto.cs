@@ -1,5 +1,3 @@
-using _04_many_to_many.Models;
-
 namespace _04_many_to_many.DTOs;
 
 public record StudentDto(
@@ -7,7 +5,7 @@ public record StudentDto(
     string Name,
     int Age,
     bool Status,
-    List<StudentCourse> StudentCourses
+    List<CourseEnrollmentDto> Courses
 );
 
 public record CreateStudentDto(
@@ -19,6 +17,12 @@ public record CreateStudentDto(
 public record UpdateStudentDto(
     string Name,
     int Age,
-    bool Status,
-    List<StudentCourse>? StudentCourses
+    bool Status
+);
+
+public record CourseEnrollmentDto(
+    Guid CourseId,
+    string CourseTitle,
+    decimal Price,
+    DateTime EnrollDate
 );

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace _05_authentication.Models;
 
 public class RefreshTokenRecord
@@ -16,8 +18,10 @@ public class RefreshTokenRecord
 
     public DateTime? RevokeAtUtc { get; set; }
 
+    [NotMapped]
     public bool IsExpired => DateTime.UtcNow >= ExpireAtUtc;
 
+    [NotMapped]
     public bool IsActive => RevokeAtUtc == null && !IsExpired;
 
     // navigation property

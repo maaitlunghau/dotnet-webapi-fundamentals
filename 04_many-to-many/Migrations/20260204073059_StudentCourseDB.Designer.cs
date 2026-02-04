@@ -12,7 +12,7 @@ using _04_many_to_many.Models;
 namespace _04_many_to_many.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260204054450_StudentCourseDB")]
+    [Migration("20260204073059_StudentCourseDB")]
     partial class StudentCourseDB
     {
         /// <inheritdoc />

@@ -19,5 +19,5 @@ public class Student
     public bool Status { get; set; } = true;
 
     // navigation property
-    public ICollection<StudentCourse> StudentCourses { get; set; } = new List<StudentCourse>();
+    public ICollection<StudentCourse>? StudentCourses { get; set; } = new List<StudentCourse>();
 }

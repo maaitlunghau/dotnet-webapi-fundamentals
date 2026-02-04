@@ -64,7 +64,25 @@ dotnet-webapi-fundamentals/
 │   │
 │   └── docs/                 # Project diagrams
 │
-├── 03_*/                     # Coming soon...
+├── 03_upload-file-local/     # File upload demo
+│   ├── backend/              # Web API Project
+│   │   ├── Controller/       # ProductController
+│   │   ├── Data/             # DataContext
+│   │   ├── DTOs/             # ProductDto
+│   │   └── Program.cs        # API configuration + Swagger
+│   │
+│   ├── frontend/             # MVC Project
+│   │   ├── Controllers/      # ProductController with upload
+│   │   ├── Helpers/          # FileUpload helper class
+│   │   ├── Views/Product/    # Index, Create views
+│   │   └── wwwroot/          # Static files + uploaded images
+│   │
+│   ├── LModels/              # Shared Class Library
+│   │   └── Domain/           # Product.cs
+│   │
+│   └── docs/                 # Upload flow diagrams
+│
+├── 04_*/                     # Coming soon...
 └── README.md
 ```
 
@@ -133,14 +151,47 @@ dotnet-webapi-fundamentals/
 
 ---
 
+### 03. File Upload with Image Management
+
+**Description:** Implement secure file upload system with image management, demonstrating file handling, validation, and storage in ASP.NET Core.
+
+**Key Features:**
+- Secure file upload with validation (type, size, MIME)
+- Image preview before upload
+- File storage in wwwroot with unique naming (GUID)
+- File deletion with cleanup on product removal
+- FileUpload helper class with security checks
+- Frontend MVC with card layout UI
+- Backend API with CRUD operations
+- Swagger UI documentation
+
+**Tech Stack:** ASP.NET Core Web API, ASP.NET Core MVC, EF Core, SQL Server, IFormFile
+
+<details>
+<summary>🔄 Upload Flow Sequence Diagram</summary>
+
+![Upload Flow Sequence](03_upload-file-local/docs/upload-flow-sequence-diagram.png)
+
+</details>
+
+<details>
+<summary>📊 Data Flow Diagram</summary>
+
+![Data Flow](03_upload-file-local/docs/data-flow-diagram-simple.png)
+
+</details>
+
+---
+
 ## 🎯 Learning Path
 
-### Completed
+### ✅ Completed
 - [x] **01_web-api_demo** - Initial Web API setup
 - [x] **02_one-to-many** - One-to-Many relationship with EF Core
+- [x] **03_upload-file-local** - File upload with image management
 
-### In Progress
-- [ ] **03_*** - TBD
+### 🔄 In Progress
+- [ ] **04_*** - TBD
 
 ### Planned Topics
 - Entity Framework Core & Database Integration

@@ -20,7 +20,7 @@ namespace _04_many_to_many.Controllers
             try
             {
                 var courses = await _dbContext.Courses
-                    .Include(c => c.StudentCourses)
+                    .Include(c => c.StudentCourses!)
                     .ThenInclude(sc => sc.Student)
                     .Select(c => new CourseDto
                     (
@@ -28,7 +28,7 @@ namespace _04_many_to_many.Controllers
                         c.Title,
                         c.Price,
                         c.Status,
-                        c.StudentCourses.ToList()
+                        c.StudentCourses!.ToList()
                     ))
                     .ToListAsync();
 

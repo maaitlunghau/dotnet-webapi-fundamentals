@@ -26,7 +26,8 @@ namespace backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+                var details = $"Exception message: {ex.Message} Details: {ex}";
+                return StatusCode((int)HttpStatusCode.InternalServerError, details);
             }
         }
 
@@ -42,7 +43,8 @@ namespace backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+                var details = $"Exception message: {ex.Message} Details: {ex}";
+                return StatusCode((int)HttpStatusCode.InternalServerError, details);
             }
         }
 
@@ -91,7 +93,8 @@ namespace backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+                var details = $"Exception message: {ex.Message} Details: {ex}";
+                return StatusCode((int)HttpStatusCode.InternalServerError, details);
             }
         }
 
@@ -110,7 +113,8 @@ namespace backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+                var details = $"Exception message: {ex.Message} Details: {ex}";
+                return StatusCode((int)HttpStatusCode.InternalServerError, details);
             }
         }
     }

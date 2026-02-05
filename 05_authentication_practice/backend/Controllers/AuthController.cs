@@ -3,6 +3,7 @@ using backend.DTOs;
 using backend.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Shared.Domain;
 
 namespace backend.Controllers
 {
@@ -34,12 +35,37 @@ namespace backend.Controllers
             if (!BCrypt.Net.BCrypt.Verify(loginRequest.Password, existingUser.Password))
                 return Unauthorized("Invalid email or password (2)");
 
+            var oldestActiveToken = null as RefreshTokenRecord;
+            int maxDevices = 3;
+
+            // count the active tokens
+            var activeTokenCount = await _dbContext.RefreshTokenRecords.CountAsync(rft =>
+                rft.UserId == existingUser.Id && rft.RevokeAtUtc == null && rft.ReplacedByRefreshToken == null
+            );
+            if (activeTokenCount >= maxDevices)
+            {
+                // get the oldest active token (by creation time)
+                oldestActiveToken = await _dbContext.RefreshTokenRecords
+                    .Where(rft => rft.UserId == existingUser.Id &&
+                           rft.RevokeAtUtc == null &&
+                           rft.ReplacedByRefreshToken == null)
+                    .OrderBy(rft => rft.CreatedAtUtc)
+                    .FirstAsync();
+
+                // revoke oldest token
+                oldestActiveToken.RevokeAtUtc = DateTime.UtcNow;
+            }
+
             // generate tokens
             var (accessToken, jti) = _tokenService.CreateAccessToken(existingUser);
 
             // generate refresh token
             var refreshToken = _tokenService.CreateRefreshToken(existingUser.Id, jti);
             await _dbContext.RefreshTokenRecords.AddAsync(refreshToken);
+
+            // replace oldest token by new token
+            if (oldestActiveToken is not null)
+                oldestActiveToken.ReplacedByRefreshToken = refreshToken.RefreshToken;
 
             await _dbContext.SaveChangesAsync();
 

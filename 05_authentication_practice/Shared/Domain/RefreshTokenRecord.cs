@@ -23,6 +23,9 @@ public class RefreshTokenRecord
     // nhận biết được refresh token này được tạo cho access token nào
     // => trong trường hợp cần thu hồi hoặc quản lý token
 
+    public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
+    // thời điểm tạo refresh token
+
     public DateTime ExpireAtUtc { get; set; }
     // thời điểm hết hạn của refresh token
 

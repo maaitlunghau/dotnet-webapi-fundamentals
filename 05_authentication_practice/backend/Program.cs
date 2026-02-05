@@ -1,6 +1,8 @@
 using System.Text;
 using backend.Data;
+using backend.Repository;
 using backend.Service;
+using backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -18,6 +20,9 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 // register DI container for TokenService
 builder.Services.AddSingleton<TokenService>();
+
+// register DI container for UserService
+builder.Services.AddScoped<IUserRepository, UserService>();
 
 // configure authentication middleware
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

@@ -1089,6 +1089,16 @@
             "rid": "win"
           }
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -2888,6 +2898,11 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2899,6 +2914,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.10",
       "Microsoft.Identity.Client >= 4.82.0",
+      "Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 10.1.1",
       "System.IdentityModel.Tokens.Jwt >= 8.15.0"
     ]
@@ -2927,7 +2943,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/Shared/Shared.csproj": {
+              "projectPath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/Shared/Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

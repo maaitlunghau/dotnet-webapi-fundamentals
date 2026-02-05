@@ -24,6 +24,9 @@ builder.Services.AddSingleton<TokenService>();
 // register DI container for UserService
 builder.Services.AddScoped<IUserRepository, UserService>();
 
+// register DI container for OtpService
+builder.Services.AddScoped<OtpService>();
+
 // configure authentication middleware
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

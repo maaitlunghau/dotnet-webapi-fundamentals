@@ -37,25 +37,23 @@ public class UserService : IUserRepository
     }
 
 
-    public async Task<User> UpdateUserAsync(User user)
+    public async Task<User> UpdateUserAsync(User u)
     {
-        var existingUser = await GetUserByIdAsync(user.Id)
-            ?? throw new KeyNotFoundException($"User with ID {user.Id} not found.");
+        var existingUser = await GetUserByIdAsync(u.Id);
+        if (existingUser is null)
+            throw new KeyNotFoundException($"User with ID {u.Id} not found.");
 
-        existingUser.Email = user.Email;
-        existingUser.Role = user.Role;
+        existingUser.Email = u.Email;
+        existingUser.Role = u.Role;
 
         await _dbContext.SaveChangesAsync();
         return existingUser;
     }
 
 
-    public async Task DeleteUserAsync(Guid? id)
+    public async Task DeleteUserAsync(User u)
     {
-        var existingUser = await GetUserByIdAsync(id)
-            ?? throw new KeyNotFoundException($"User with ID {id} not found.");
-
-        _dbContext.Users.Remove(existingUser);
+        _dbContext.Users.Remove(u);
         await _dbContext.SaveChangesAsync();
     }
 }

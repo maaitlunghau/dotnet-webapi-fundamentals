@@ -143,3 +143,4 @@
 /Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/backend/obj/Debug/net10.0/backend.pdb
 /Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/backend/obj/Debug/net10.0/backend.genruntimeconfig.cache
 /Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/backend/obj/Debug/net10.0/ref/backend.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/backend/bin/Debug/net10.0/BCrypt.Net-Next.dll

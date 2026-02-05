@@ -43,7 +43,7 @@ public class TokenService
         // convert format secret key (text) to byte array by SymmetricSecurityKey instance
         // because HMACSHA256 needs byte array key (not string) to work 
         // 
-        // HMACSHA256 algorithmsL thuật toán ký của JWT
+        // HMACSHA256 algorithm: thuật toán ký của JWT
         // mục đích chính: tạo SIGNATURE để bảo vệ JWT token
         // ngoài ra:
         //      + tạo chữ ký cho JWT

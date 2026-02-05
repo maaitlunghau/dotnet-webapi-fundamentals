@@ -29,14 +29,15 @@ public class UserService : IUserRepository
     }
 
 
-    public async Task AddUserAsync(User user)
+    public async Task<User> AddUserAsync(User user)
     {
         await _dbContext.Users.AddAsync(user);
         await _dbContext.SaveChangesAsync();
+        return user;
     }
 
 
-    public async Task UpdateUserAsync(User user)
+    public async Task<User> UpdateUserAsync(User user)
     {
         var existingUser = await GetUserByIdAsync(user.Id)
             ?? throw new KeyNotFoundException($"User with ID {user.Id} not found.");
@@ -45,6 +46,7 @@ public class UserService : IUserRepository
         existingUser.Role = user.Role;
 
         await _dbContext.SaveChangesAsync();
+        return existingUser;
     }
 
 

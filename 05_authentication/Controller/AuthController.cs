@@ -22,10 +22,12 @@ namespace _05_authentication.Controller
         public async Task<IActionResult> Login(LoginRequestDto loginRequest)
         {
             var acc = await _dbContext.Accounts.FirstOrDefaultAsync(a =>
-                a.Email == loginRequest.Email &&
-                a.Password == loginRequest.Password
+                a.Email == loginRequest.Email
             );
-            if (acc is null) return Unauthorized();
+
+            // Verify password (cần implement BCrypt.Net-Next)
+            if (acc is null || !BCrypt.Net.BCrypt.Verify(loginRequest.Password, acc.Password))
+                return Unauthorized("Email hoặc mật khẩu không đúng!");
 
             var (accessToken, jti) = _tokenService.CreateAccessToken(acc);
             var frToken = _tokenService.CreateRefreshtoken(acc.Id, jti);

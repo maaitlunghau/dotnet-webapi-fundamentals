@@ -22,12 +22,14 @@ namespace _05_authentication.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Account account)
+        public async Task<IActionResult> Post(Account acc)
         {
-            await _dbContext.Accounts.AddAsync(account);
+            acc.Password = BCrypt.Net.BCrypt.HashPassword(acc.Password);
+
+            await _dbContext.Accounts.AddAsync(acc);
             await _dbContext.SaveChangesAsync();
 
-            return Created("", account);
+            return Created("", new { acc.Id, acc.Email, acc.Role });
         }
     }
 }

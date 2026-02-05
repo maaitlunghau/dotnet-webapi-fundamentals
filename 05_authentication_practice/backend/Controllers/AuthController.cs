@@ -1,6 +1,7 @@
 using backend.Data;
 using backend.DTOs;
 using backend.Service;
+using backend.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.Domain;
@@ -13,10 +14,12 @@ namespace backend.Controllers
     {
         private readonly DataContext _dbContext;
         private readonly TokenService _tokenService;
-        public AuthController(DataContext dbContext, TokenService tokenService)
+        private readonly OtpService _otpService;
+        public AuthController(DataContext dbContext, TokenService tokenService, OtpService otpService)
         {
             _dbContext = dbContext;
             _tokenService = tokenService;
+            _otpService = otpService;
         }
 
 
@@ -135,6 +138,100 @@ namespace backend.Controllers
                 AccessToken: accessToken,
                 RefreshToken: newRefreshToken.RefreshToken
             ));
+        }
+
+
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequestDto request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u =>
+                u.Email == request.Email
+            );
+            if (existingUser is null)
+                return Ok("If the email is registered, an OTP has been sent.");
+
+            // xoá toàn bộ OTP cũ chưa sử dụng
+            var oldOtps = await _dbContext.OtpRecords
+                .Where(otp => otp.UserId == existingUser.Id && !otp.IsUsed)
+                .ToListAsync();
+            if (oldOtps.Any()) _dbContext.OtpRecords.RemoveRange(oldOtps);
+
+            // tạo OTP mới
+            var otpRecord = _otpService.CreateOtp(existingUser.Id);
+            await _dbContext.OtpRecords.AddAsync(otpRecord);
+            await _dbContext.SaveChangesAsync();
+
+            // TODO: gửi OTP qua email
+            // _emailService.SendOtpEmail(existingUser.Email, otpRecord.OtpCode);
+
+            return Ok(new
+            {
+                Message = "OTP sent to email",
+                OTP = otpRecord.OtpCode // DEV ONLY - Remove in production!
+            });
+        }
+
+
+        [HttpPost("VerifyOtp")]
+        public async Task<IActionResult> VerifyOtp([FromBody] VerifyOtpRequestDto request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u =>
+                u.Email == request.Email
+            );
+            if (existingUser is null) return Unauthorized("Invalid OTP");
+
+            var otpRecord = await _dbContext.OtpRecords
+                .Where(otp => otp.UserId == existingUser.Id && !otp.IsUsed)
+                .OrderByDescending(otp => otp.CreatedAtUtc)
+                .FirstOrDefaultAsync();
+            if (otpRecord is null || !_otpService.VerifyOtp(otpRecord, request.OtpCode))
+                return Unauthorized("Invalid or expired OTP");
+
+            return Ok("OTP verified successfully");
+        }
+
+
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordRequestDto request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var existingUser = await _dbContext.Users.FirstOrDefaultAsync(u =>
+                u.Email == request.Email
+            );
+            if (existingUser is null) return Unauthorized("Invalid request");
+
+            // tìm OTP chưa sử dụng gần nhất
+            var otpRecord = await _dbContext.OtpRecords
+                .Where(otp => otp.UserId == existingUser.Id && !otp.IsUsed)
+                .OrderByDescending(otp => otp.CreatedAtUtc)
+                .FirstOrDefaultAsync();
+            if (otpRecord is null || !_otpService.VerifyOtp(otpRecord, request.Otp))
+                return Unauthorized("Invalid or expired OTP");
+
+            // Hash password mới SAU KHI verify thành công
+            existingUser.Password = BCrypt.Net.BCrypt.HashPassword(request.NewPassword, 12);
+
+            // đánh dấu OTP là đã sử dụng
+            otpRecord.IsUsed = true;
+            otpRecord.UsedAtUtc = DateTime.UtcNow;
+
+            // revoke tất cả refresh token hiện có của user
+            var allActiveTokens = await _dbContext.RefreshTokenRecords
+                .Where(rft => rft.UserId == existingUser.Id && rft.RevokeAtUtc == null)
+                .ToListAsync();
+
+            foreach (var token in allActiveTokens)
+                token.RevokeAtUtc = DateTime.UtcNow;
+
+            // lưu thay đổi vào cơ sở dữ liệu
+            await _dbContext.SaveChangesAsync();
+
+            return Ok("Password reset successfully");
         }
     }
 }

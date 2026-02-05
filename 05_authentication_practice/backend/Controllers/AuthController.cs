@@ -76,6 +76,25 @@ namespace backend.Controllers
         }
 
 
+        [HttpPost("Logout")]
+        public async Task<IActionResult> Logout(LogoutRequestDto logoutRequest)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var refreshToken = await _dbContext.RefreshTokenRecords.FirstOrDefaultAsync(rft =>
+                rft.RefreshToken == logoutRequest.refreshToken
+            );
+            if (refreshToken is null || !refreshToken.IsActive)
+                return Unauthorized("Invalid refresh token");
+
+            refreshToken.RevokeAtUtc = DateTime.UtcNow;
+            await _dbContext.SaveChangesAsync();
+
+            return Ok("Logged out successfully");
+        }
+
+
         [HttpPost("RefreshToken")]
         public async Task<IActionResult> RefreshToken(RefreshTokenDto refreshToken)
         {

@@ -274,6 +274,87 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 
 ---
 
+### 05. JWT Authentication with Refresh Token
+
+**Description:** Implement secure JWT-based authentication system with Access Token and Refresh Token rotation, demonstrating modern authentication patterns in ASP.NET Core.
+
+**Key Features:**
+- JWT Access Token & Refresh Token implementation
+- Token rotation with automatic refresh mechanism
+- Secure token storage (HttpOnly cookies)
+- Refresh Token revocation & replacement tracking
+- Password hashing with BCrypt
+- Bearer token authentication middleware
+- Repository pattern for data access
+- Frontend MVC with login/logout flow
+- Backend API with separate AuthAPI service
+- Token expiration handling (401 Unauthorized)
+
+**Tech Stack:** ASP.NET Core Web API, ASP.NET Core MVC, JWT, BCrypt, EF Core, SQL Server
+
+<details>
+<summary>📂 Project Structure</summary>
+
+```
+05_authentication_practice/
+├── backend/
+│   ├── Controllers/
+│   │   ├── AuthController.cs
+│   │   └── UserController.cs
+│   ├── Data/
+│   │   └── DataContext.cs
+│   ├── DTOs/
+│   │   ├── LoginDto.cs
+│   │   ├── AuthResponseDto.cs
+│   │   └── RefreshTokenRequestDto.cs
+│   ├── Repository/
+│   ├── Services/
+│   │   └── TokenService.cs
+│   ├── Migrations/
+│   └── Program.cs
+├── frontend/
+│   ├── Controllers/
+│   │   └── AuthController.cs
+│   ├── Helpers/
+│   ├── Views/
+│   │   ├── Auth/
+│   │   └── Shared/
+│   └── wwwroot/
+├── Shared/
+│   └── Domain/
+│       ├── User.cs
+│       └── RefreshTokenRecord.cs
+└── docs/
+    ├── jwt-authentication-flow-diagram.png
+    ├── JWT-based-authentication-sequence-diagram.png
+    └── token-refresh-flow.png
+```
+
+</details>
+
+<details>
+<summary>🔐 JWT Authentication Flow Diagram</summary>
+
+![JWT Authentication Flow](05_authentication_practice/docs/jwt-authentication-flow-diagram.png)
+
+</details>
+
+<details>
+<summary>🔄 JWT-Based Authentication Sequence Diagram</summary>
+
+![JWT Authentication Sequence](05_authentication_practice/docs/JWT-based-authentication-sequence-diagram.png)
+
+</details>
+
+<details>
+<summary>🔄 Token Refresh Flow</summary>
+
+![Token Refresh Flow](05_authentication_practice/docs/token-refresh-flow.png)
+
+</details>
+
+---
+
 ## 🎯 Learning Path
 
 ### ✅ Completed
@@ -281,9 +362,10 @@ This repository contains a progressive series of ASP.NET Core Web API projects, 
 - [x] **02_one-to-many** - One-to-Many relationship with EF Core
 - [x] **03_upload-file-local** - File upload with image management
 - [x] **04_many-to-many** - Many-to-Many relationship with junction table
+- [x] **05_authentication_practice** - JWT Authentication with Refresh Token
 
 ### 🔄 In Progress
-- [ ] **05_*** - TBD
+- [ ] **06_*** - TBD
 
 ### Planned Topics
 - Entity Framework Core & Database Integration

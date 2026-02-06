@@ -13,7 +13,7 @@ public class UserService : IUserRepository
 
     public async Task<IEnumerable<User>> GetAllUsersAsync()
     {
-        return await _dbContext.Users.ToListAsync();
+        return await _dbContext.Users.Include(s => s.RefreshTokenRecords).ToListAsync();
     }
 
 

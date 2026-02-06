@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using backend.Data;
 using backend.Repository;
@@ -5,12 +6,19 @@ using backend.Service;
 using backend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
+// configure JSON serialization to handle circular references
+// nếu ko muốn dùng IgnoreCycles thì dùng DTO để tránh lỗi (ReferenceHandler.IgnoreCycles)
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
@@ -53,6 +61,31 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
         // allow some clock drift (+- 30 seconds)
         ClockSkew = TimeSpan.FromSeconds(30)
+    };
+
+    // configure events for JWT Bearer (middleware)
+    // nếu kco middleware này thì khi 1 AC hoặc RFT đã bị revoke thì vẫn còn dùng đc
+    // phải có thì middleware này kiểm tra thấy đã bị revoke thì return về luôn.
+    options.Events = new JwtBearerEvents
+    {
+        OnTokenValidated = async context =>
+        {
+            var jti = context.Principal?.FindFirst(JwtRegisteredClaimNames.Jti)?.Value;
+            if (string.IsNullOrEmpty(jti))
+            {
+                context.Fail("Missing jti");
+                return;
+            }
+
+            // lấy dataContext (EF Core) từ DI container
+            var db = context.HttpContext.RequestServices.GetService<DataContext>();
+
+            var revoked = await db!.RefreshTokenRecords.AnyAsync(rft =>
+                rft.AccessTokenJti == jti &&
+                rft.RevokeAtUtc != null
+            );
+            if (revoked) context.Fail("Token has been revoked");
+        }
     };
 });
 

@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "n419qDpmg0c=",
+  "dgSpecHash": "ohaKVS6faNQ=",
   "success": true,
   "projectFilePath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/05_authentication_practice/frontend/frontend.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/maaitlunghau/.nuget/packages/microsoft.identitymodel.abstractions/8.15.0/microsoft.identitymodel.abstractions.8.15.0.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.15.0/microsoft.identitymodel.jsonwebtokens.8.15.0.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.identitymodel.logging/8.15.0/microsoft.identitymodel.logging.8.15.0.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.identitymodel.tokens/8.15.0/microsoft.identitymodel.tokens.8.15.0.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/system.identitymodel.tokens.jwt/8.15.0/system.identitymodel.tokens.jwt.8.15.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,3 +1,5 @@
+using frontend.DTOs;
+using frontend.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Domain;
 
@@ -13,6 +15,18 @@ namespace frontend.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            var currentUser = HttpContext.Session.GetObject<UserSessionDto>("CurrentUser");
+            if (currentUser != null && currentUser?.Role != "admin")
+            {
+                TempData["ErrorMessage"] = "Access denied. Admins only.";
+                return RedirectToAction("Index", "Home");
+            }
+            else if (currentUser == null)
+            {
+                TempData["ErrorMessage"] = "Please login to access the user list.";
+                return RedirectToAction("Login", "Auth");
+            }
+
             var users = await _httpClient.GetFromJsonAsync<List<User>>(_userApiBaseUrl);
             return View(users);
         }

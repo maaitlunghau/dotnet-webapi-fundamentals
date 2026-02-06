@@ -1,0 +1,72 @@
+@model frontend.DTOs.LoginRequestDto
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-shield-lock display-4 text-primary"></i>
+                        <h3 class="mt-3 fw-bold">Welcome Back</h3>
+                        <p class="text-muted">Sign in to your account</p>
+                    </div>
+
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <form asp-action="Login" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold">
+                                <i class="bi bi-envelope me-1"></i>Email
+                            </label>
+                            <input asp-for="Email" class="form-control form-control-lg" 
+                                   placeholder="your@email.com" autofocus />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Password" class="form-label fw-semibold">
+                                <i class="bi bi-lock me-1"></i>Password
+                            </label>
+                            <input asp-for="Password" type="password" 
+                                   class="form-control form-control-lg" 
+                                   placeholder="Enter your password" />
+                            <span asp-validation-for="Password" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="#" class="text-decoration-none small">Forgot password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <small class="text-muted">
+                    Don't have an account? <a href="#" class="text-decoration-none">Sign up</a>
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

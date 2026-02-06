@@ -1,0 +1,37 @@
+﻿@using frontend.DTOs
+@using frontend.Helpers
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container py-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    else if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        @{
+            var currentUser = Context.Session.GetObject<UserSessionDto>("CurrentUser");
+        }
+        @if (currentUser != null)
+        {
+            <p class="lead">Hello, <strong>@currentUser.Email</strong>!</p>
+            <p class="text-muted">Role: <span class="badge bg-primary">@currentUser.Role</span></p>
+        }
+        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+</div>

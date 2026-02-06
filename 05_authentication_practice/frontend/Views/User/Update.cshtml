@@ -1,0 +1,72 @@
+@model Shared.Domain.User
+
+@{
+    ViewData["Title"] = "Update User";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex align-items-center">
+                        <a asp-action="Index" class="btn btn-sm btn-outline-secondary me-3">
+                            <i class="bi bi-arrow-left"></i>
+                        </a>
+                        <div>
+                            <h4 class="mb-0 fw-bold">Update User</h4>
+                            <small class="text-muted">Edit user information</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Update" asp-route-id="@Model.Id" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Password" />
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold">
+                                <i class="bi bi-envelope me-1"></i>Email Address
+                            </label>
+                            <input asp-for="Email" class="form-control form-control-lg"
+                                   placeholder="user@example.com" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Role" class="form-label fw-semibold">
+                                <i class="bi bi-person-badge me-1"></i>Role
+                            </label>
+                            <select asp-for="Role" class="form-select form-select-lg">
+                                <option value="">-- Select Role --</option>
+                                <option value="user" selected="@ViewBag.CurrentRole.Equals("user")">User</option>
+                                <option value="admin" selected="@ViewBag.CurrentRole.Equals("admin")">Admin</option>
+                            </select>
+                            <span asp-validation-for="Role" class="text-danger small"></span>
+                        </div>
+
+                        <div class="alert alert-info border-0 mb-4">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <small>To change password, please use the "Reset Password" feature.</small>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-check-circle me-2"></i>Update User
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                                <i class="bi bi-x-circle me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

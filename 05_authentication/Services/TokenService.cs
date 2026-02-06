@@ -56,6 +56,7 @@ public class TokenService
         return (accessToken, jti);
     }
 
+    // create refresh token
     public RefreshTokenRecord CreateRefreshtoken(Guid AccountId, string accessTokenJti)
     {
         // tạo thời gian sống refreshToken

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "gpEJx+4P/Uc=",
+  "success": true,
+  "projectFilePath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/06_upload-many-file/06_upload-many-file.csproj",
+  "expectedPackageFiles": [
+    "/Users/maaitlunghau/.nuget/packages/microsoft.aspnetcore.openapi/10.0.1/microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,3 +1,4 @@
+using _06_upload_many_file.Helpers;
 using _06_upload_many_file.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectedDB"));
 });
+builder.Services.AddScoped<IFileStorage, LocalFileStorage>();
 
 var app = builder.Build();
 

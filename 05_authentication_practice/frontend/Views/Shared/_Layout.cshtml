@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using frontend.DTOs
+@using frontend.Helpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,30 +13,86 @@
     <link rel="stylesheet" href="~/frontend.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
+
+@{
+    UserSessionDto? currentUser = Context.Session.GetObject<UserSessionDto>("CurrentUser");
+}
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">frontend</a>
+                @if (currentUser != null && currentUser.Role == "admin")
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        Admin Panel
+                    </a>
+                }
+                else
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        Userify
+                    </a>
+                }
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @if (currentUser != null && currentUser.Role == "admin")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User Management</a>
+                            </li>
+                        }
+                        else {
+                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User
-                                Management</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                   asp-action="Privacy">Privacy</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
-                        </ul>
-                    </div>
+                        }
+                    </ul>
+
+                    <!-- User Info Section -->
+                    <ul class="navbar-nav">
+                        @if (currentUser != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" 
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle me-1"></i>
+                                    @currentUser.Email
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li>
+                                        <span class="dropdown-item-text">
+                                            <small class="text-muted">Role: @currentUser.Role</small>
+                                        </span>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form asp-controller="Auth" asp-action="Logout" method="post" class="d-inline">
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-box-arrow-right me-2"></i>Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Auth" asp-action="Login">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
                 </div>
             </nav>
         </header>

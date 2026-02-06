@@ -134,5 +134,152 @@ namespace frontend.Controllers
             TempData["SuccessMessage"] = "You have been logged out successfully.";
             return RedirectToAction(nameof(Login));
         }
+
+        // GET: /Auth/ForgotPassword
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        // POST: /Auth/ForgotPassword
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordRequestDto request)
+        {
+            if (!ModelState.IsValid)
+                return View(request);
+
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync(
+                    $"{_authApiBaseUrl}/ForgotPassword",
+                    request
+                );
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // Parse response để lấy OTP
+                    var result = await response.Content.ReadFromJsonAsync<dynamic>();
+                    var otp = result?.GetProperty("otp").GetString() ?? result?.GetProperty("OTP").GetString();
+
+                    // Lưu email vào TempData
+                    TempData["ResetEmail"] = request.Email;
+                    
+                    // Truyền OTP vào ViewBag để hiển thị trong modal
+                    ViewBag.OtpCode = otp;
+                    ViewBag.ShowOtpModal = true;
+                    
+                    return View(request);
+                }
+
+                TempData["ErrorMessage"] = "Failed to send OTP. Please try again.";
+                return View(request);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
+                return View(request);
+            }
+        }
+
+        // GET: /Auth/VerifyOtp
+        [HttpGet]
+        public IActionResult VerifyOtp()
+        {
+            var email = TempData.Peek("ResetEmail") as string;
+            if (string.IsNullOrEmpty(email))
+            {
+                TempData["ErrorMessage"] = "Please start from Forgot Password.";
+                return RedirectToAction(nameof(ForgotPassword));
+            }
+
+            var model = new VerifyOtpRequestDto { Email = email };
+            return View(model);
+        }
+
+        // POST: /Auth/VerifyOtp
+        [HttpPost]
+        public async Task<IActionResult> VerifyOtp(VerifyOtpRequestDto request)
+        {
+            if (!ModelState.IsValid)
+                return View(request);
+
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync(
+                    $"{_authApiBaseUrl}/VerifyOtp",
+                    request
+                );
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData["ResetEmail"] = request.Email;
+                    TempData["ResetOtp"] = request.OtpCode;
+                    TempData["SuccessMessage"] = "OTP verified successfully.";
+                    return RedirectToAction(nameof(ResetPassword));
+                }
+
+                TempData["ErrorMessage"] = "Invalid or expired OTP.";
+                return View(request);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
+                return View(request);
+            }
+        }
+
+        // GET: /Auth/ResetPassword
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            var email = TempData.Peek("ResetEmail") as string;
+            var otp = TempData.Peek("ResetOtp") as string;
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(otp))
+            {
+                TempData["ErrorMessage"] = "Please complete OTP verification first.";
+                return RedirectToAction(nameof(ForgotPassword));
+            }
+
+            var model = new ResetPasswordRequestDto
+            {
+                Email = email,
+                Otp = otp
+            };
+            return View(model);
+        }
+
+        // POST: /Auth/ResetPassword
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordRequestDto request)
+        {
+            if (!ModelState.IsValid)
+                return View(request);
+
+            try
+            {
+                var response = await _httpClient.PostAsJsonAsync(
+                    $"{_authApiBaseUrl}/ResetPassword",
+                    request
+                );
+
+                if (response.IsSuccessStatusCode)
+                {
+                    TempData.Remove("ResetEmail");
+                    TempData.Remove("ResetOtp");
+                    TempData["SuccessMessage"] = "Password reset successfully. Please login with your new password.";
+                    return RedirectToAction(nameof(Login));
+                }
+
+                TempData["ErrorMessage"] = "Failed to reset password. Please try again.";
+                return View(request);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
+                return View(request);
+            }
+        }
     }
 }

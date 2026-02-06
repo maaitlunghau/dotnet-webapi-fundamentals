@@ -8,7 +8,6 @@ public class OtpService
     public OtpService(IConfiguration configuration)
         => _configuration = configuration;
 
-
     public OtpRecord CreateOtp(Guid userId)
     {
         var otp = Random.Shared.Next(100000, 999999).ToString();
@@ -21,7 +20,6 @@ public class OtpService
             ExpireAtUtc = DateTime.UtcNow.AddMinutes(expiryMinutes)
         };
     }
-
 
     public bool VerifyOtp(OtpRecord otpRecord, string inputOtp)
     {

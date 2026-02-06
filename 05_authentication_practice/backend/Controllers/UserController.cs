@@ -1,5 +1,6 @@
 using System.Net;
 using backend.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Domain;
 
@@ -17,6 +18,7 @@ namespace backend.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "user,admin")]
         public async Task<IActionResult> GetAllUsers()
         {
             try
@@ -32,6 +34,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("{id:Guid}")]
+        [Authorize(Roles = "user,admin")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             try
@@ -49,6 +52,7 @@ namespace backend.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> CreateUser([FromBody] User u)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -76,6 +80,7 @@ namespace backend.Controllers
 
 
         [HttpPut("{id:Guid}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> UpdateUser(Guid id, [FromBody] User u)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -100,6 +105,7 @@ namespace backend.Controllers
 
 
         [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
             try

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("06_upload-many-file")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcda66137c1d1db532b3d1e196d912e1e0ac22b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd4f55f23e6f4ce69c72f5865330ed8ded02481b")]
 [assembly: System.Reflection.AssemblyProductAttribute("06_upload-many-file")]
 [assembly: System.Reflection.AssemblyTitleAttribute("06_upload-many-file")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

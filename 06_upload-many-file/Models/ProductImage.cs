@@ -12,7 +12,7 @@ public class ProductImage
     public int ProductId { get; set; }
 
     [Required(ErrorMessage = "Url is required.")]
-    public int Url { get; set; }
+    public string Url { get; set; } = string.Empty;
 
     public Product? Product { get; set; }
 }

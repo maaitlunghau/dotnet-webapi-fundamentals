@@ -1,0 +1,46 @@
+<mxfile host="65bd71144e">
+    <diagram id="micro-arch" name="Microservices Overview">
+        <mxGraphModel dx="1038" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Client (Web/Mobile)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="API GATEWAY&#10;(Auth, Routing, Rate Limit)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="190" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="User Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Order Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="240" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Payment Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="380" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="User DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="90" width="60" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Order DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="230" width="60" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Payment DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="370" width="60" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Message Broker (Kafka / RabbitMQ)" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="415" y="500" width="310" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" edge="1" parent="1" source="2" target="3"><mxGeometry relative="1" as="geometry"/></mxCell>
+                <mxCell id="12" edge="1" parent="1" source="3" target="4"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="360" y="130"/></Array></mxGeometry></mxCell>
+                <mxCell id="13" edge="1" parent="1" source="3" target="5"><mxGeometry relative="1" as="geometry"/></mxCell>
+                <mxCell id="14" edge="1" parent="1" source="3" target="6"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="360" y="410"/></Array></mxGeometry></mxCell>
+                <mxCell id="15" edge="1" parent="1" source="4" target="7"><mxGeometry relative="1" as="geometry"/></mxCell>
+                <mxCell id="16" edge="1" parent="1" source="5" target="8"><mxGeometry relative="1" as="geometry"/></mxCell>
+                <mxCell id="17" edge="1" parent="1" source="6" target="9"><mxGeometry relative="1" as="geometry"/></mxCell>
+                <mxCell id="18" edge="1" parent="1" source="5" target="10"><mxGeometry relative="1" as="geometry"/></mxCell>
+                <mxCell id="19" edge="1" parent="1" source="6" target="10"><mxGeometry relative="1" as="geometry"/></mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

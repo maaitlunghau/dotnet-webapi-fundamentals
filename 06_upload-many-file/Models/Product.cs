@@ -16,5 +16,5 @@ public class Product
     [Column(TypeName = "decimal(10,2)")]
     public double Price { get; set; }
 
-    public List<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+    public List<ProductImage>? ProductImages { get; set; } = new();
 }

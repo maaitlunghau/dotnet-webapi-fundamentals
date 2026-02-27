@@ -16,6 +16,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.AddScoped<IUserRepository, UserService>();
+builder.Services.AddSingleton<TokenService>();
 
 var app = builder.Build();
 

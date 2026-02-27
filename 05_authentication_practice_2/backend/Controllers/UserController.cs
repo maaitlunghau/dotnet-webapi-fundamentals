@@ -1,6 +1,7 @@
 using System.Net;
 using backend.DTOs;
 using backend.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Domain;
 
@@ -15,6 +16,7 @@ namespace backend.Controllers
             => _userRepository = userRepository;
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Get()
         {
             try
@@ -40,6 +42,7 @@ namespace backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -68,6 +71,7 @@ namespace backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUserDto dto)
         {
@@ -108,6 +112,7 @@ namespace backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserDTO dto)
         {
@@ -153,6 +158,7 @@ namespace backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {

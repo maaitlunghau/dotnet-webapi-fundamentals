@@ -32,7 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers/" />
     <Folder Include="Data/" />
+    <Folder Include="DTOs/" />
+    <Folder Include="Repositories/" />
+    <Folder Include="Services/" />
   </ItemGroup>
 
   <ItemGroup>

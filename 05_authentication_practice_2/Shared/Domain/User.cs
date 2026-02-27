@@ -16,11 +16,11 @@ public class User
     [StringLength(100, ErrorMessage = "Email must be less than 100 characters")]
     public string Email { get; set; } = string.Empty;
 
-    [Required]
-    [StringLength(255)]
+    [Required(ErrorMessage = "Password is required")]
+    [StringLength(255, ErrorMessage = "Password must be less than 255 characters")]
     public string Password { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "Role is required")]
     [StringLength(20)]
     public string Role { get; set; } = "user";
 

@@ -33,7 +33,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         var audience = builder.Configuration["JWT:Audience"]
             ?? throw new InvalidOperationException("JWT:Audience is not configured");
 
-        // Configure token validation parameters
+        // configure token validation parameters
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,

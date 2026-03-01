@@ -35,6 +35,5 @@ public class RefreshTokenRecord
     [NotMapped]
     public bool IsActive => RevokedAtUTC == null && !IsExpired;
 
-    // Navigation property
     public User? User { get; set; }
 }

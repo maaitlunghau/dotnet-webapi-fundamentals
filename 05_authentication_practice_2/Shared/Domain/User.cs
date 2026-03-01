@@ -28,6 +28,5 @@ public class User
 
     public DateTime UpdatedAtUTC { get; set; } = DateTime.UtcNow;
 
-    // navigation property
     public ICollection<RefreshTokenRecord>? RefreshTokenRecords { get; set; }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IWCWOQqL27k=",
+  "dgSpecHash": "uYDlPIdCW7A=",
   "success": true,
-  "projectFilePath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/direct/direct.csproj",
+  "projectFilePath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/consume_one/consume_one.csproj",
   "expectedPackageFiles": [
     "/Users/maaitlunghau/.nuget/packages/microsoft.extensions.apidescription.server/10.0.0/microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
     "/Users/maaitlunghau/.nuget/packages/microsoft.openapi/2.4.1/microsoft.openapi.2.4.1.nupkg.sha512",

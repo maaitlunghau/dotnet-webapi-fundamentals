@@ -493,11 +493,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/direct/direct.csproj",
-      "projectName": "direct",
-      "projectPath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/direct/direct.csproj",
+      "projectUniqueName": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/consume_one/consume_one.csproj",
+      "projectName": "consume_one",
+      "projectPath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/consume_one/consume_one.csproj",
       "packagesPath": "/Users/maaitlunghau/.nuget/packages/",
-      "outputPath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/direct/obj/",
+      "outputPath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ/consume_one/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/maaitlunghau/.nuget/NuGet/NuGet.Config"

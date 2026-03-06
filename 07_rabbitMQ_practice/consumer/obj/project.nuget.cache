@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "e6u8XqLqfbg=",
+  "success": true,
+  "projectFilePath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/07_rabbitMQ_practice/consumer/consumer.csproj",
+  "expectedPackageFiles": [
+    "/Users/maaitlunghau/.nuget/packages/microsoft.aspnetcore.openapi/10.0.1/microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -8,11 +8,11 @@
     ".NETCoreApp,Version=v10.0": {
       "user-service/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.OpenApi": "10.0.1",
           "Microsoft.EntityFrameworkCore": "8.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.13",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.13",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.3"
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.3",
+          "Swashbuckle.AspNetCore": "10.1.1"
         },
         "runtime": {
           "user-service.dll": {}
@@ -50,17 +50,6 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.OpenApi/10.0.1": {
-        "dependencies": {
-          "Microsoft.OpenApi": "2.0.0"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "assemblyVersion": "10.0.1.0",
-            "fileVersion": "10.0.125.57005"
           }
         }
       },
@@ -497,11 +486,11 @@
           }
         }
       },
-      "Microsoft.OpenApi/2.0.0": {
+      "Microsoft.OpenApi/2.4.1": {
         "runtime": {
           "lib/net8.0/Microsoft.OpenApi.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.0"
           }
         }
       },
@@ -557,6 +546,43 @@
           "lib/net8.0/Pomelo.EntityFrameworkCore.MySql.dll": {
             "assemblyVersion": "8.0.3.0",
             "fileVersion": "8.0.3.0"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore/10.1.1": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "10.1.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "10.1.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "10.1.1"
+        }
+      },
+      "Swashbuckle.AspNetCore.Swagger/10.1.1": {
+        "dependencies": {
+          "Microsoft.OpenApi": "2.4.1"
+        },
+        "runtime": {
+          "lib/net10.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "assemblyVersion": "10.1.1.0",
+            "fileVersion": "10.1.1.2172"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/10.1.1": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "10.1.1"
+        },
+        "runtime": {
+          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "assemblyVersion": "10.1.1.0",
+            "fileVersion": "10.1.1.2172"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/10.1.1": {
+        "runtime": {
+          "lib/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "assemblyVersion": "10.1.1.0",
+            "fileVersion": "10.1.1.2172"
           }
         }
       },
@@ -790,13 +816,6 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.OpenApi/10.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gMY53EggRIFawhue66GanHcm1Tcd0+QzzMwnMl60LrEoJhGgzA9qAbLx6t/ON3hX4flc2NcEbTK1Z5GCLYHcwA==",
-      "path": "microsoft.aspnetcore.openapi/10.0.1",
-      "hashPath": "microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512"
-    },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -951,12 +970,12 @@
       "path": "microsoft.identitymodel.tokens/6.35.0",
       "hashPath": "microsoft.identitymodel.tokens.6.35.0.nupkg.sha512"
     },
-    "Microsoft.OpenApi/2.0.0": {
+    "Microsoft.OpenApi/2.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GGYLfzV/G/ct80OZ45JxnWP7NvMX1BCugn/lX7TH5o0lcVaviavsLMTxmFV2AybXWjbi3h6FF1vgZiTK6PXndw==",
-      "path": "microsoft.openapi/2.0.0",
-      "hashPath": "microsoft.openapi.2.0.0.nupkg.sha512"
+      "sha512": "sha512-u7QhXCISMQuab3flasb1hoaiERmUqyWsW7tmQODyILoQ7mJV5IRGM+2KKZYo0QUfC13evEOcHAb6TPWgqEQtrw==",
+      "path": "microsoft.openapi/2.4.1",
+      "hashPath": "microsoft.openapi.2.4.1.nupkg.sha512"
     },
     "Microsoft.SqlServer.Server/1.0.0": {
       "type": "package",
@@ -992,6 +1011,34 @@
       "sha512": "sha512-gOHP6v/nFp5V/FgHqv9mZocGqCLGofihEX9dTbLhiXX3H7SJHmGX70GIPUpiqLT+1jIfDxg1PZh9MTUKuk7Kig==",
       "path": "pomelo.entityframeworkcore.mysql/8.0.3",
       "hashPath": "pomelo.entityframeworkcore.mysql.8.0.3.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pWb/TzYOG/3VOhCD8uqXrt54PwQbX8bsfeza49Lo6Y1wl2fC2Qxj3oiVYEEDFY3Ug6zV7uPzMxhrr+U0RqskGg==",
+      "path": "swashbuckle.aspnetcore/10.1.1",
+      "hashPath": "swashbuckle.aspnetcore.10.1.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.Swagger/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uboevzqi/byrbQr/lpPYQQC8aeHs7YqJCbpYs/b/nWnF++6Lc33BqLkjaHnACYTVylio1zMqUuND3fg8vv0+MA==",
+      "path": "swashbuckle.aspnetcore.swagger/10.1.1",
+      "hashPath": "swashbuckle.aspnetcore.swagger.10.1.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mIy+YMXn3e3uwgHJMAFC7WVq5U4oQag/nrO/TSAGdjbiMn/JPfBMNV+F05X9yoJee/N+AJi7Pc8zy+jr56GsZw==",
+      "path": "swashbuckle.aspnetcore.swaggergen/10.1.1",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.10.1.1.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/10.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-t2+tHjz6vyhVJO67B/g8vZCY78o3dVQ0OevpuT+HuNk7EWITW5McjzJK2skJTfEPhiRWkYdfRdC+Z8UerZSfcg==",
+      "path": "swashbuckle.aspnetcore.swaggerui/10.1.1",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.10.1.1.nupkg.sha512"
     },
     "System.ClientModel/1.0.0": {
       "type": "package",

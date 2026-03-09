@@ -59,6 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08_microservices", "08_micr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "user-service", "08_microservices\user-service\user-service.csproj", "{EEE9F089-6342-4B8C-99F9-2A65D8108AFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order-service", "08_microservices\order-service\order-service.csproj", "{4CA94968-25FE-4438-A084-22DFEDA85BAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -321,6 +323,18 @@ Global
 		{EEE9F089-6342-4B8C-99F9-2A65D8108AFA}.Release|x64.Build.0 = Release|Any CPU
 		{EEE9F089-6342-4B8C-99F9-2A65D8108AFA}.Release|x86.ActiveCfg = Release|Any CPU
 		{EEE9F089-6342-4B8C-99F9-2A65D8108AFA}.Release|x86.Build.0 = Release|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Debug|x64.Build.0 = Debug|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Debug|x86.Build.0 = Debug|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Release|x64.ActiveCfg = Release|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Release|x64.Build.0 = Release|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Release|x86.ActiveCfg = Release|Any CPU
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -343,5 +357,6 @@ Global
 		{6BEE17FE-88B3-47E4-A64B-65D59E77508B} = {588A60B1-1C48-3A52-947B-50CF7F292D12}
 		{22D38767-7810-4675-BDDE-583C75234961} = {588A60B1-1C48-3A52-947B-50CF7F292D12}
 		{EEE9F089-6342-4B8C-99F9-2A65D8108AFA} = {395339CF-9D11-607B-D043-E73A85152C18}
+		{4CA94968-25FE-4438-A084-22DFEDA85BAB} = {395339CF-9D11-607B-D043-E73A85152C18}
 	EndGlobalSection
 EndGlobal

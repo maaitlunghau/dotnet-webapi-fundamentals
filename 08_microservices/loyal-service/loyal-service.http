@@ -1,0 +1,6 @@
+@loyal_service_HostAddress = http://localhost:5028
+
+GET {{loyal_service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,11 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Zq1W/F+lyu8=",
+  "dgSpecHash": "oO1P9XNUv8s=",
   "success": true,
   "projectFilePath": "/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/08_microservices/user-service/user-service.csproj",
   "expectedPackageFiles": [
     "/Users/maaitlunghau/.nuget/packages/microsoft.aspnetcore.openapi/10.0.1/microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
-    "/Users/maaitlunghau/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+    "/Users/maaitlunghau/.nuget/packages/microsoft.entityframeworkcore/8.0.13/microsoft.entityframeworkcore.8.0.13.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.13/microsoft.entityframeworkcore.abstractions.8.0.13.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.13/microsoft.entityframeworkcore.analyzers.8.0.13.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.13/microsoft.entityframeworkcore.relational.8.0.13.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/mysqlconnector/2.3.5/mysqlconnector.2.3.5.nupkg.sha512",
+    "/Users/maaitlunghau/.nuget/packages/pomelo.entityframeworkcore.mysql/8.0.3/pomelo.entityframeworkcore.mysql.8.0.3.nupkg.sha512"
   ],
   "logs": []
 }

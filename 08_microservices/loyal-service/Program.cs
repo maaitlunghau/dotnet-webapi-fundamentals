@@ -14,6 +14,14 @@ builder.Services.Configure<MongoDbSettings>(
 builder.Services.AddSingleton<MongoDbService>();
 builder.Services.AddScoped<LoyaltyCustomerService>();
 
+// Bind cấu hình RabbitMQ từ appsettings.json
+builder.Services.Configure<RabbitMqOptions>(
+    builder.Configuration.GetSection("RabbitMq"));
+// Register services
+builder.Services.AddSingleton<IRabbitMqConnection, RabbitMqConnection>();
+// Đăng ký BackgroundService (Consumer)
+builder.Services.AddHostedService<RabbitMqConsumerHostedService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

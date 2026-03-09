@@ -31,7 +31,7 @@ namespace user_service.Controller
                 Message = user.Email
             };
 
-            await _rabbitMqPublisher.PublishAsync("user_points", messageDto);
+            await _rabbitMqPublisher.PublishAsync("user.points", messageDto);
 
             return Ok(user);
         }

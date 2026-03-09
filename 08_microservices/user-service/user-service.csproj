@@ -22,6 +22,7 @@
   <ItemGroup>
     <Folder Include="Controller/" />
     <Folder Include="Data/" />
+    <Folder Include="DTOs/" />
     <Folder Include="Model/" />
   </ItemGroup>
 

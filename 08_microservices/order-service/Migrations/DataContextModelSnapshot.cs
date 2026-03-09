@@ -37,7 +37,7 @@ namespace order_service.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Orders");
                 });
 #pragma warning restore 612, 618
         }

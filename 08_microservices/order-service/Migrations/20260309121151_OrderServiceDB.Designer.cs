@@ -11,7 +11,7 @@ using order_service.Data;
 namespace order_service.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260309120256_OrderServiceDB")]
+    [Migration("20260309121151_OrderServiceDB")]
     partial class OrderServiceDB
     {
         /// <inheritdoc />
@@ -40,7 +40,7 @@ namespace order_service.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Orders");
                 });
 #pragma warning restore 612, 618
         }

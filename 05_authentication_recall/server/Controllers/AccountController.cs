@@ -1,6 +1,8 @@
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using server.Data;
+using server.DTOs;
 using server.Models;
 
 namespace server.Controllers
@@ -67,6 +69,19 @@ namespace server.Controllers
             await _dbContext.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDto dto)
+        {
+            var user = await _dbContext.Accounts.FirstOrDefaultAsync(a =>
+                a.Email == dto.Email &&
+                a.Password == dto.Password
+            );
+            if (user is null)
+                return Unauthorized("Email or password is invalid!");
+
+            return Ok(user);
         }
     }
 }

@@ -10,6 +10,8 @@ public class Account
 
     public string Email { get; set; } = string.Empty;
 
+    public string Password { get; set; } = string.Empty;
+
     [RegularExpression("^(ADMIN|USER)$", ErrorMessage = "Role must be ADMIN or USER")]
     public string Role { get; set; } = string.Empty;
 

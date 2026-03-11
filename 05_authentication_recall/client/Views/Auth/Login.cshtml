@@ -1,0 +1,16 @@
+﻿@using client.DTOs
+@model LoginDto
+
+<form asp-action="Login" method="post">
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" placeholder="Enter email" asp-for="Email">
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" placeholder="Enter password" asp-for="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>

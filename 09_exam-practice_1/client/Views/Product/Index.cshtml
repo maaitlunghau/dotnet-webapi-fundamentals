@@ -1,0 +1,82 @@
+@model IEnumerable<client.Models.Product>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">DANH SÁCH SẢN PHẨM</h2>
+
+    <!-- Price Filter Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form asp-action="Index" method="get" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Price From:</label>
+                    <input type="number" name="minPrice" value="@ViewBag.MinPrice" class="form-control" placeholder="100" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Price To:</label>
+                    <input type="number" name="maxPrice" value="@ViewBag.MaxPrice" class="form-control" placeholder="400" />
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Lọc sản phẩm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <p>
+        <a asp-action="Create" class="btn btn-success">+ Thêm mới sản phẩm</a>
+    </p>
+
+    <table class="table table-bordered table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>
+                            <img src="/@item.Image" alt="@item.Name" width="80" class="img-thumbnail" />
+                        </td>
+                        <td>
+                            <form asp-action="UpdateStatus" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <input type="hidden" name="status" value="@((!item.Status).ToString().ToLower())" />
+                                <button type="submit" class="btn btn-sm @(item.Status ? "btn-info" : "btn-secondary")">
+                                    @(item.Status ? "Active" : "Disactive")
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-action="DeleteProduct" method="post" onsubmit="return confirm('Xóa sản phẩm này?')">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center"> Không tìm thấy sản phẩm nào.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

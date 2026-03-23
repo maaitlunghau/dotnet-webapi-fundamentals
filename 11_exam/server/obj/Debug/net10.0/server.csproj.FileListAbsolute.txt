@@ -116,3 +116,11 @@
 /Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/obj/Debug/net10.0/server.pdb
 /Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/obj/Debug/net10.0/server.genruntimeconfig.cache
 /Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/obj/Debug/net10.0/ref/server.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/BCrypt.Net-Next.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/Microsoft.IdentityModel.Logging.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
+/Users/maaitlunghau/Documents/SelfStudy/dotnet-webapi-fundamentals/11_exam/server/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
